@@ -10,9 +10,81 @@ class Album extends Component {
      });
 
      this.state = {
-       album: album
+       album: album,
+       currentSong: album.songs[0],
+       isPlaying: false,
+       isHovered: false,
+       songHovered: album.songs[0],
+
      };
+
+     this.handleHoverOn = this.handleHoverOn.bind(this);
+     this.handleHoverOff = this.handleHoverOff.bind(this);
+
+     this.audioElement = document.createElement('audio');
+     this.audioElement.src = album.songs[0].audioSrc;
    }
+
+   play() {
+     this.audioElement.play();
+     this.setState({ isPlaying: true });
+}
+
+   pause() {
+     this.audioElement.pause();
+     this.setState({ isPlaying: false });
+}
+
+   setSong(song) {
+     this.audioElement.src = song.audioSrc;
+     this.setState({ currentSong: song });
+}
+
+   handleSongClick(song) {
+     const isSameSong = this.state.currentSong === song;
+     if (this.state.isPlaying && isSameSong) {
+       this.pause();
+     } else {
+       if (!isSameSong) { this.setSong(song); }
+       this.play();
+     }
+   }
+
+   handleHoverOn(song){
+    this.setState({
+        isHovered: false
+    });
+    this.setState({
+        songHovered: song
+    });
+  }
+
+  handleHoverOff(){
+    this.setState({
+        isHovered: true
+    });
+  }
+
+  songHover(song, index, album) {
+    const isSameSong = this.state.currentSong === song;
+    if (!this.state.isHovered && this.state.songHovered === song && !isSameSong) {
+      return (
+        <div className = "ion-play"></div>
+      )
+    } else if (!this.state.isPlaying && isSameSong) {
+      return (
+        <div className = "ion-play"></div>
+      )
+    } else if (this.state.isPlaying && isSameSong){
+      return(
+        <div className = "ion-pause"></div>
+      )
+    } else {
+        return (
+          <div className = "song-number">{index + 1}</div>
+        )
+    }
+  }
 
    render() {
      return (
@@ -32,16 +104,18 @@ class Album extends Component {
              <col id="song-duration-column" />
            </colgroup>
            <tbody>
-            {
-              this.state.album.songs.map((song,index) =>
-                 <tr className="song" key={index}>
-                  <td className="song-number">{index+1}</td>
-                  <td className="song-title">{this.state.album.songs[index].title}</td>
-                  <td id="song-duration">{this.state.album.songs[index].duration}</td>
-                 </tr>
-               )
+              {
+                this.state.album.songs.map( (song, index, album) =>
+                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.handleHoverOn(song)} onMouseLeave={this.handleHoverOff}>
+                    <td>
+                      {this.songHover(song, index, album)}
+                    </td>
+                    <td className="song-title">{song.title}</td>
+                    <td>{song.duration}</td>
+                  </tr>
+                )
               }
-          </tbody>
+            </tbody>
          </table>
        </section>
      );
