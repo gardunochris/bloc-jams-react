@@ -26,3 +26,20 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+nav {
+  background: hsla(0, 0%, 0%, 0.2);
+  padding: 1rem 2rem;
+}
+
+nav img {
+  height: 50px;
+}
+
+main {
+  width: 100%;
+  max-width: 800px;
+  margin: 4rem auto 150px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}

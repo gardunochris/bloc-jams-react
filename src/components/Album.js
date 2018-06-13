@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
+import './album.css';
+import './player-bar.css';
+import './song-list.css';
+
+
 
 class Album extends Component {
   constructor(props) {
@@ -184,6 +189,8 @@ class Album extends Component {
               }
             </tbody>
          </table>
+
+
          <PlayerBar
            isPlaying={this.state.isPlaying}
            currentSong={this.state.currentSong}
@@ -197,6 +204,8 @@ class Album extends Component {
            formatTime={(time) => this.formatTime(time)}
          />
        </section>
+
+
      );
    }
  }
