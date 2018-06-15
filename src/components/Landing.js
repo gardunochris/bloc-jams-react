@@ -15,8 +15,7 @@ class Landing extends Component {
               className="avatar-img"
               />
 
-            <div classNam
-  e="banner-text">
+            <div className="banner-text">
               <h1>Streaming Music For Programmers</h1>
 
             <hr/>
