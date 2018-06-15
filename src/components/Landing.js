@@ -19,9 +19,9 @@ class Landing extends Component {
 
             <hr/>
 
-          <p><a href="/Library">
+          <p><Link to="/Library">
   <img src="/assets/images/Play-Now.png" alt="play button"/>
-</a>
+</Link>
   </p>
 
 
