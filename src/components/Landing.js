@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
+import { Link } from 'react-router-dom';
 
 
 class Landing extends Component {
@@ -14,7 +15,8 @@ class Landing extends Component {
               className="avatar-img"
               />
 
-            <div className="banner-text">
+            <div classNam
+  e="banner-text">
               <h1>Streaming Music For Programmers</h1>
 
             <hr/>
@@ -22,6 +24,7 @@ class Landing extends Component {
           <p><Link to="/Library">
   <img src="/assets/images/Play-Now.png" alt="play button"/>
 </Link>
+
   </p>
 
 

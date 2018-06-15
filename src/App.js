@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
-import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
+import { Layout, Header, Navigation, Content } from 'react-mdl';
 import Landing from './components/Landing';
 import Library from './components/Library';
 import Album from './components/Album';
@@ -17,7 +17,7 @@ class App extends Component {
 
               </Navigation>
           </Header>
-        
+
           <Content>
               <div className="page-content" />
                 <main>
