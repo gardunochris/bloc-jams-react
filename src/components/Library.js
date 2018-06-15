@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import albumData from './../data/albums';
+import { Tabs, Tab, Grid, Cell, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton } from 'react-mdl';
 
 class Library extends Component {
   constructor(props) {
@@ -8,20 +9,35 @@ class Library extends Component {
      this.state = { albums: albumData };
    }
 
+   bgStyle(bg) {
+     return {background: 'url("' + bg + '") no-repeat center / cover'  }
+   }
+
   render() {
    return (
      <section className='library'>
-       {
-          this.state.albums.map( (album, index) =>
-            <Link to={`/album/${album.slug}`} key={index}>
-              <img src={album.albumCover} alt={album.title} />
-              <div>{album.title}</div>
-              <div>{album.artist}</div>
-              <div>{album.songs.length} songs</div>
-            </Link>
-          )
-        }
-     </section>
+       <Grid className="demo-grid-1">
+
+             {
+               this.state.albums.map( (album, index) =>
+                 <Link to={`/album/${album.slug}`} key={index} >
+
+                      <Cell col={index}>
+                   <div className="library-album mdl-card mdl-shadow--4dp">
+                     <div style=" object-fit: scale-down" className="mdl-card__title mdl-card--expand" style={this.bgStyle(album.albumCover)} >
+                       <h2 className="mdl-card__title-text">{album.title}</h2>
+                     </div>
+                     <div className="artist mdl-card__supporting-text">
+                       {album.artist}
+                     </div>
+
+                   </div></Cell>
+
+                 </Link>
+               )
+             }
+             </Grid>
+           </section>
     );
   }
 }

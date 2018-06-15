@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Grid, Cell } from 'react-mdl';
 
-const Landing = () => (
-  <section className="landing">
-    <h1 className="hero-title">Turn the music up!</h1>
-  <section className="selling-points">
-    <div className="point">
-      <h2 className="point-title">Choose your music</h2>
-      <p className="point-description">The world is full of music; why should you have to listen to music that someone else chose?</p>
-    </div>
-    <div className="point">
-      <h2 className="point-title">Unlimited, streaming, ad-free</h2>
-      <p className="point-description">No arbitrary limits. No distractions.</p>
-    </div>
-    <div className="point">
-      <h2 className="point-title">Mobile enabled</h2>
-      <p className="point-description">Listen to your music on the go. This streaming service is available on all mobile platforms.</p>
-    </div>
-  </section>
-  </section>
-);
+
+class Landing extends Component {
+  render() {
+    return(
+      <div style={{width: '100%', margin: 'auto'}}>
+        <Grid className="landing-grid">
+          <Cell col={12}>
+            <img
+              src="/assets/images/reactradio.png"
+              alt="avatar"
+              className="avatar-img"
+              />
+
+            <div className="banner-text">
+              <h1>Streaming Music For Programmers</h1>
+
+            <hr/>
+
+          <p><a href="/Library">
+  <img src="/assets/images/Play-Now.png" alt="play button"/>
+</a>
+  </p>
+
+
+            </div>
+          </Cell>
+        </Grid>
+      </div>
+    )
+  }
+}
 
 export default Landing;
